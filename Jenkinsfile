@@ -13,7 +13,7 @@ pipeline {
 
   stage('Checkout SCM') {
     steps {
-          git branch: 'main', url: 'https://github.com/okikiolumide/php-todo.git'
+          git branch: 'feature/jenkinspipeline-ci', url: 'https://github.com/okikiolumide/php-todo.git'
     }
   }
 
