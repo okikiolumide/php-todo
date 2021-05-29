@@ -69,7 +69,7 @@ pipeline {
                  def server = Artifactory.server 'artifactory-server'
                  def uploadSpec = """{
                     "files": [{
-                       "pattern": "php-todo.zip/",
+                       "pattern": "php-todo.zip",
                        "target": "php-todo/"
                     }]
                  }"""
@@ -78,7 +78,11 @@ pipeline {
                }
     }
   }
-
+  stage ('Deploy to Dev Environment') {
+    steps {
+    build job: 'ansible-project/main', parameters: [[$class: 'StringParameterValue', name: 'env', value: 'uat']], propagate: false, wait: true
+    }
+  }
 
 
   }
